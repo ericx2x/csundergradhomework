@@ -1,0 +1,235 @@
+;; Eric Lima
+;; Pset 3
+;;
+
+;;Excercise 1
+;; _ _ _ _ _ _ _ _ _ _ _ _  _ _ _ _ _ _ 
+(define (make-rat x y)
+   (let ((z ((if (< y 0) - +) (gcd x y))))
+     (cons (/ x y) (/ y z))))
+
+;; _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+;; Exercise 2
+ (define (make-point x y) (cons x y)) 
+ (define (x-point p) (car p)) 
+ (define (y-point p) (cdr p)) 
+ (define (print-point p) 
+   (newline) 
+   (display "(") 
+   (display (x-point p)) 
+   (display ",") 
+   (display (y-point p)) 
+   (display ")")) 
+  
+(define (make-segment start-point end-point) 
+   (cons start-point end-point)) 
+ (define (start-segment segment) (car segment)) 
+ (define (end-segment segment) (cdr segment)) 
+  
+ (define (midpoint-segment segment) 
+   (define (average a b) (/ (+ a b) 2.0)) 
+   (let ((a (start-segment segment)) 
+         (b (end-segment segment))) 
+     (make-point (average (x-point a) 
+                          (x-point b)) 
+                 (average (y-point a) 
+                          (y-point b))))) 
+  
+(define seg (make-segment (make-point 2 3) 
+                           (make-point 10 15))) 
+  
+
+
+;; _ _ _ _ _ _ _ _ _ _ _ _ __ _ _ _ _ _ 
+;; Exercise 3
+  
+ (define (make-point x y) (cons x y)) 
+ (define (x-point p) (car p)) 
+ (define (y-point p) (cdr p)) 
+    
+ (define (mrect bl top-right) 
+   (cons bl top-right)) 
+  
+ (define (bl rect) (car rect)) 
+ (define (br rect) 
+   (make-point (x-point (cdr rect)) 
+               (y-point (car rect)))) 
+ (define (top-left rect) 
+   (make-point (x-point (car rect)) 
+               (y-point (cdr rect)))) 
+ (define (top-right rect) (cdr rect)) 
+  
+ (define (wrect rect) 
+   (abs (- (x-point (bl rect)) 
+           (x-point (br rect))))) 
+ (define (hrect rect) 
+   (abs (- (y-point (bl rect)) 
+           (y-point (top-left rect))))) 
+  
+ (define (area-rect rect) 
+   (* (wrect rect) (hrect rect))) 
+ (define (perimeter-rect rect) 
+   (* (+ (wrect rect) (hrect rect)) 2)) 
+   
+
+   
+ (define (mrect bl width height) 
+   (cons bl (cons width height))) 
+  
+ (define (hrect rect) (cdr (cdr rect)))  
+ (define (wrect rect) (car (cdr rect))) 
+  
+ (define (square x) (* x x)) 
+  
+ (define (make-point x y) (cons x y)) 
+ (define (x-point p) (car p)) 
+ (define (y-point p) (cdr p)) 
+ (define (point-dist p1 p2) 
+   (sqrt (+ (square (- (x-point p1) (x-point p2))) 
+            (square (- (y-point p1) (y-point p2)))))) 
+  
+ (define (make-segment p1 p2) (cons p1 p2)) 
+ (define (start-seg p) (car p)) 
+ (define (end-seg p) (cdr p)) 
+ (define (seg-len seg) (point-dist (start-seg seg) 
+                                   (end-seg seg))) 
+  
+ (define (mrect s parallel-s)  
+   (cons s parallel-s))  
+ (define (s1 rect) (car rect)) 
+ (define (s2 rect) (cdr rect)) 
+ (define (s-legths rect) 
+   (cons (seg-len (s1 rect)) 
+         (min (abs (point-dist (start-seg (s1 rect)) 
+                          (start-seg (s2 rect)))) 
+              (abs (point-dist (start-seg (s1 rect)) 
+                          (end-seg (s2 rect))))))) 
+  
+ (define (wrect rect) (car (s-legths rect))) 
+ (define (hrect rect) (cdr (s-legths rect))) 
+  
+ (define r (mrect (make-segment (make-point 0 1)  
+                                 (make-point 0 0)) 
+                   (make-segment (make-point 1 0) 
+                                 (make-point 1 1))))  
+ 
+  
+ (define (mrect s perpendicular-s)  
+   (cons s perpendicular-s))  
+ (define (s-legths rect) 
+   (cons (seg-len (s1 rect)) 
+         (seg-len (s2 rect)))) 
+
+
+
+;; _ _ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _
+;; Exercise 4
+
+ (define (cons1 a b) 
+   (lambda (m) (m a b))) 
+   
+ (define (car1 z) 
+   (z (lambda (p q) p))) 
+  
+  (define (cdr1 z) 
+   (z (lambda (p q) q))) 
+  
+
+ 
+;; _ _ _ _ _ _ _  _ _ _ _ __ _ _ _ __ _
+;; Exercise 5
+;On hard copy
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+;; _ _ _ _ _ _ _ _ __ _ _ _ _ _ _ _ _ _ _
+;; Exercise 6
+; On Hard Copy
+  
+  
+  
+  
+  
+  
+  
+  
+  
+;;__ _ _ _ __ _ _ ___ _ _ __ _ _ _ _ _
+;; Exercise 7
+
+  (define (list-sum lst) 
+   (if (null? lst) 
+        0 
+       (+ (car lst) 
+          (list-sum (cdr lst))))) 
+
+(list-sum `(1 2 3 4))
+  
+#| a.) list-sum is called 5 times when evaluating the expression above.
+   b.) The order of growth in space and time for the list-sum procedure above is order n.
+|#
+;c.) 
+(define (list-sum1 lst)
+    (define (list-iter lst sum)
+   (if (null? lst) 
+        sum 
+        (list-iter (cdr lst)(+ sum (car lst)))))(list-iter lst 0))
+  
+(list-sum1 `(1 2 3 4))
+ ; d.) The order of growth in space and time for the list-sum procedure above is order n.
+;; _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+;; Exercise 8
+(define (same-parity first . rest) 
+   (define (same-parity-iter source dist remainder-val) 
+     (if (null? source) 
+         dist 
+         (same-parity-iter (cdr source) 
+                           (if (= (remainder (car source) 2) remainder-val) 
+                               (append dist (list (car source))) 
+                               dist) 
+                           remainder-val))) 
+   (same-parity-iter rest (list first) (remainder first 2)))
+
+;; _ _ _ __ _ _ _ _  __ _ _ __ _ __ _ _ _
+;; Exercise 9
+(define (square-list items) 
+   (if (null? items) 
+       items 
+       (cons (square (car items)) (square-list (cdr items))))) 
+ 
+  
+ (define (square-list2 items) 
+   (map (lambda (x) (square x)) items)) 
+  
+
+
+;; _ __ _ __ _ _ _ _ _ __ _ _ __ _ _ _ _ _
+;; Exercise 10
+(define (map p sequence)
+  (accumulate (lambda (x y) (cons (p x) y)) 
+) nil sequence))
+(define (append seq1 seq2)
+  (accumulate cons seq2 seq1))
+(define (length sequence)
+  (accumulate (lambda (x y) 
+                 (+ 1 y)) 
+ 0 sequence))
+
+;; _ __ _ __ _ _ _ _ _ __ _ _ __ _ _ _ _ _
+;; Exercise 11
+(define (count-leaves t)
+  (accumulate + 0 (map (lambda (n) 
+                          (if (pair? n) 
+                              (count-leaves-recursive n) 
+                              1)) 
+                        t)))
+

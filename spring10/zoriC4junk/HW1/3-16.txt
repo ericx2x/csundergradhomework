@@ -1,0 +1,11 @@
+World myworld = new World();
+Turtle arw = new Turtle(myworld);
+arw.forward(100);
+arw.turnRight();
+arw.forward(50);
+arw.turn(-180);
+arw.forward(100);
+arw.turn(135);
+arw.forward(75);
+arw.turn(90);
+arw.forward(75);

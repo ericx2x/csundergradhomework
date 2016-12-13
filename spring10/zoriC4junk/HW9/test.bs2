@@ -1,0 +1,84 @@
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+light_right_pin PIN 0
+light_center_pin PIN 1
+light_left_pin PIN 2
+line_enable_pin PIN 3
+line_right_pin PIN 4
+line_left_pin PIN 5
+obj_recv_pin PIN 6
+stall_pin PIN 7
+LED_right PIN 8
+LED_center PIN 9
+LED_left PIN   10
+speaker_pin PIN 11
+motor_right_pin PIN 12
+motor_left_pin PIN 13
+obj_send_right_pin PIN 14
+obj_send_left_pin PIN 15
+
+i VAR WORD
+led1 VAR WORD
+led2 VAR WORD
+led3 VAR WORD
+a VAR WORD
+l1 VAR WORD
+l2 VAR WORD
+l3 VAR WORD
+
+
+FOR i=1 TO 10 STEP 1
+led1 = (i)//(2)
+led2 = ((i)/(2))//(2)
+led3 = ((i)/(4))//(3)
+OUTPUT LED_left
+OUTPUT LED_center
+OUTPUT LED_right
+LED_left = led3
+LED_center = led2
+LED_right = led1
+DEBUG "i is: ", DEC i, CR
+PAUSE 1000
+NEXT
+
+DEBUG "now i am done", CR
+
+DO
+FREQOUT obj_send_left_pin, 1, 38500
+l1 = obj_recv_pin
+LOW obj_send_left_pin
+
+DEBUG "light: ", DEC l1, ", ", DEC l2, ", ", DEC l3, CR
+PAUSE 500
+
+a = stall_pin
+IF (a) THEN
+DEBUG "stalled: a=", DEC a, CR
+ELSE
+DEBUG "not stalled: a=", DEC a, CR
+ENDIF
+LOOP 
+
+
+DO
+PULSOUT motor_left_pin, 2000+(100*(3))
+PULSOUT motor_right_pin, 2000+(100*(3))
+
+PAUSE 1000
+PULSOUT motor_left_pin, 2000
+PULSOUT motor_right_pin, 2000
+
+PULSOUT motor_left_pin, 2000-(100*(3))
+PULSOUT motor_right_pin, 2000-(100*(3))
+
+PAUSE 1000
+PULSOUT motor_left_pin, 2000
+PULSOUT motor_right_pin, 2000
+
+DEBUG "stopped", CR
+PAUSE 3000
+LOOP 
+
+
+END

@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+
+<project name="CSLite" default="compile" basedir=".">
+  <description>chirp scribbler lite compiler</description>
+  <property name="dir.src" value="./src"/>
+  <property name="dir.bin" value="./bin"/>
+  <property name="antlr" value="./antlr-3.1.3.jar"/>
+  <property name="jdom" value="./jdom.jar"/>
+  <property name="jdom-contrib" value="./jdom-contrib.jar"/>
+  <property name="jdomtool" value="./jdomtool.jar"/>
+
+  <target name="prepare" description="create directories">
+    <mkdir dir="${dir.bin}"/>
+  </target>
+
+  <target name="compile" depends="prepare" description="compile java files">
+    <javac srcdir="${dir.src}" destdir="${dir.bin}" debug="on" source="1.5" >
+      <classpath>
+        <pathelement path="${antlr}"/>
+        <pathelement path="${jdom}"/>
+        <pathelement path="${jdom-contrib}"/>
+        <pathelement path="${jdomtool}"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="run_parser" depends="compile">
+     <java classname="csc.TestParser" fork="true">
+           <classpath>
+               <pathelement path="${dir.bin}"/>
+	            <pathelement path="${antlr}"/>
+            <pathelement path="${jdom}"/>
+            <pathelement path="${jdom-contrib}"/>
+            <pathelement path="${jdomtool}"/>
+           </classpath>
+           <arg value="hello.csl"/>
+     </java>
+  </target>
+
+	  <target name="run_lexer" depends="compile">
+	     <java classname="csc.TestLexer" fork="true">
+	           <classpath>
+	               <pathelement path="${dir.bin}"/>
+		            <pathelement path="${antlr}"/>
+	            <pathelement path="${jdom}"/>
+	            <pathelement path="${jdom-contrib}"/>
+		    <pathelement path="${jdomtool}"/>
+	           </classpath>
+	           <arg value="hello.csl"/>
+	     </java>
+	  </target>
+
+	  <target name="run_codegen" depends="compile">
+	     <java classname="csc.TestCodeGen" fork="true">
+	           <classpath>
+	               <pathelement path="${dir.bin}"/>
+		            <pathelement path="${antlr}"/>
+	            <pathelement path="${jdom}"/>
+	            <pathelement path="${jdom-contrib}"/>
+		    <pathelement path="${jdomtool}"/>
+	           </classpath>
+	           <arg value="hello.csl"/>
+	     </java>
+	  </target>
+
+  <target name="jar" depends="compile" description="jar archive">
+    <jar jarfile="${dir.bin}/../cslite.jar"
+         basedir="${dir.bin}"
+    	 includes="**/*.class"
+    	 excludes="**/*Test.class"/>
+  </target>
+
+  <target name="clean" description="clean directories">
+    <delete dir="${dir.bin}"/>
+  </target>
+
+</project>

@@ -1,0 +1,29 @@
+World myworld = new World();
+Turtle house = new Turtle(myworld);
+
+house.forward(100);
+house.turnRight();
+house.forward(100);
+house.turnRight();
+house.forward(100);
+house.turnRight();
+house.forward(100);
+house.turnRight();
+house.forward(100);
+house.turn(45);
+house.forward(71);
+house.turn(90);
+house.forward(71);
+
+house.turn(45);
+house.forward(100);
+house.turnRight();
+house.forward(40);
+house.turnRight();
+house.forward(30);
+house.turnLeft();
+house.forward(20);
+house.turnLeft();
+house.forward(30);
+
+

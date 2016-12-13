@@ -1,0 +1,43 @@
+Script started on Thu 25 Mar 2010 07:41:50 PM EDT
+]0;elima@mercury:~/programs/spring10/elima.pr2[elima@mercury elima.pr2]$ make
+make: Warning: File `makefile' has modification time 1.2e+03 s in the future
+g++ -c main.cpp
+g++ -c node.cpp
+g++ -c tree.cpp
+g++ -o project2 main.o node.o tree.o
+make: warning:  Clock skew detected.  Your build may be incomplete.
+]0;elima@mercury:~/programs/spring10/elima.pr2[elima@mercury elima.pr2]$ ls
+[00m[00mmain.cpp[00m  [00mmakefile[00m  [00mnode.h[00m  [00;32mproject2[00m  [00mtree.h[00m  [00;35mtreeuml.png[00m
+[00mmain.o[00m    [00mnode.cpp[00m  [00mnode.o[00m  [00mtree.cpp[00m  [00mtree.o[00m  [00mtypescript[00m
+[m]0;elima@mercury:~/programs/spring10/elima.pr2[elima@mercury elima.pr2]$ project2 
+
+Please, enter a label for a tree. a
+
+The root of the new tree is a
+
+Now please enter a label for the child node. b
+
+ Please, enter a label for a sibling of node. b: c
+
+Now inserting node 'g' as a child of the root.
+Now inserting node 'd' as a child of c.
+Now inserting node 'e' as a child of c.
+Now inserting node 'f' as a child of e.
+
+Now performing a depth first search on the tree
+Printing each label of the node as it reaches it
+a
+b
+c
+d
+e
+f
+g
+
+Complete.
+]0;elima@mercury:~/programs/spring10/elima.pr2[elima@mercury elima.pr2]$ Ex[KXIT
+bash: EXIT: command not found
+]0;elima@mercury:~/programs/spring10/elima.pr2[elima@mercury elima.pr2]$ exit
+exit
+
+Script done on Thu 25 Mar 2010 07:42:14 PM EDT

@@ -1,0 +1,4 @@
+Eric Lima
+ericjlima@gmail.com
+
+I've gave Mult and Div an attempt, but I didn't get it to work 100%. I believe my code makes sense, I thought about the process and gave my attempt, but it doesn't run properly. I think my degree of success is around 70% since I have the general idea of how to code it. I was not able to get my resulting output because it doesn't run properly.

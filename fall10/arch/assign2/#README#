@@ -1,0 +1,10 @@
+Eric Lima
+Assignment 2
+
+I believe I should get somewhere between a 90%-100%. 
+
+My steps for solving this go in order. I put in the hidden bit, then i got the differnce of the exponent fields for both floats and put the answer in a 
+variable I called shifter. Then I shifted the smaller float number to whatever needed to be done. I later adjusted the bits of the result. I check for 
+overflow. I also made sure to remove the hidden bit, but I believe this step is wrong somehow and it is what is causing one of my numbers not to work which is why I think I should have a few points taken off. 
+
+The numbers 7.491 and 4.617e20 gave me weird output.

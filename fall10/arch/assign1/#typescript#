@@ -1,0 +1,77 @@
+	Script started on Mon 13 Sep 2010 12:32:52 AM EDT
+]0;elima@mercury:~/programs/fall10/arch[elima@mercury arch]$ exit[Ka.out
+please enter a floating point number and new-line: 5
+The floating value for 5.000000 is broken out as: 
+  Mantissa: 0x200000  or:             010 0000 0000 0000 0000 0000
+  Exponent: 0x81      or:   1000 0001
+      Sign: 0         or: 0  
+in base 10: 5.000000  or: 0 1000 0001 010 0000 0000 0000 0000 0000  
+]0;elima@mercury:~/programs/fall10/arch[elima@mercury arch]$ a.out
+please enter a floating point number and new-line: 237.75
+The floating value for 237.750000 is broken out as: 
+  Mantissa: 0x6dc000  or:             110 1101 1100 0000 0000 0000
+  Exponent: 0x86      or:   1000 0110
+      Sign: 0         or: 0  
+in base 10: 237.7500  or: 0 1000 0110 110 1101 1100 0000 0000 0000  
+]0;elima@mercury:~/programs/fall10/arch[elima@mercury arch]$ a.out
+please enter a floating point number and new-line: -.0000005126
+The floating value for -0.000001 is broken out as: 
+  Mantissa: 0x9999b  or:             000 1001 1001 1001 1001 1011
+  Exponent: 0x6a      or:   0110 1010
+      Sign: 1         or: 1  
+in base 10: -5.126000e-07  or: 1 0110 1010 000 1001 1001 1001 1001 1011  
+]0;elima@mercury:~/programs/fall10/arch[elima@mercury arch]$ a.out
+please enter a floating point number and new-line: 9  -92,457,321.670245  ^[[D     5^[[D     5
+The floating value for -92.000000 is broken out as: 
+  Mantissa: 0x380000  or:             011 1000 0000 0000 0000 0000
+  Exponent: 0x85      or:   1000 0101
+      Sign: 1         or: 1  
+in base 10: -92.00000  or: 1 1000 0101 011 1000 0000 0000 0000 0000  
+]0;elima@mercury:~/programs/fall10/arch[elima@mercury arch]$ 6.023E+23
+bash: 6.023E+23: command not found
+]0;elima@mercury:~/programs/fall10/arch[elima@mercury arch]$ 6.023E+23[4Pa.out
+please enter a floating point number and new-line: 6.023E+23
+The floating value for 602299993035875123462144.000000 is broken out as: 
+  Mantissa: 0x7f157f  or:             111 1111 0001 0101 0111 1111
+  Exponent: 0xcd      or:   1100 1101
+      Sign: 0         or: 0  
+in base 10: 6.023000e+23  or: 0 1100 1101 111 1111 0001 0101 0111 1111  
+]0;elima@mercury:~/programs/fall10/arch[elima@mercury arch]$ a.out
+please enter a floating point number and new-line: 1.67339E-40
+The floating value for 0.000000 is broken out as: 
+  Mantissa: 0x1d279  or:             000 0001 1101 0010 0111 1001
+  Exponent: 0x0      or:   0000 0000
+      Sign: 0         or: 0  
+in base 10: 1.673389e-40  or: 0 0000 0000 000 0001 1101 0010 0111 1001  
+]0;elima@mercury:~/programs/fall10/arch[elima@mercury arch]$ a.out
+please enter a floating point number and new-line: 7.1
+The floating value for 7.100000 is broken out as: 
+  Mantissa: 0x633333  or:             110 0011 0011 0011 0011 0011
+  Exponent: 0x81      or:   1000 0001
+      Sign: 0         or: 0  
+in base 10: 7.100000  or: 0 1000 0001 110 0011 0011 0011 0011 0011  
+]0;elima@mercury:~/programs/fall10/arch[elima@mercury arch]$ a.out
+please enter a floating point number and new-line: 1.23
+The floating value for 1.230000 is broken out as: 
+  Mantissa: 0x1d70a4  or:             001 1101 0111 0000 1010 0100
+  Exponent: 0x7f      or:   0111 1111
+      Sign: 0         or: 0  
+in base 10: 1.230000  or: 0 0111 1111 001 1101 0111 0000 1010 0100  
+]0;elima@mercury:~/programs/fall10/arch[elima@mercury arch]$ a.out
+please enter a floating point number and new-line: -1 .123
+The floating value for -0.123000 is broken out as: 
+  Mantissa: 0x7be76d  or:             111 1011 1110 0111 0110 1101
+  Exponent: 0x7b      or:   0111 1011
+      Sign: 1         or: 1  
+in base 10: -0.1230000  or: 1 0111 1011 111 1011 1110 0111 0110 1101  
+]0;elima@mercury:~/programs/fall10/arch[elima@mercury arch]$ a.out
+please enter a floating point number and new-line: 9.9
+The floating value for 9.900000 is broken out as: 
+  Mantissa: 0x1e6666  or:             001 1110 0110 0110 0110 0110
+  Exponent: 0x82      or:   1000 0010
+      Sign: 0         or: 0  
+in base 10: 9.900000  or: 0 1000 0010 001 1110 0110 0110 0110 0110  
+]0;elima@mercury:~/programs/fall10/arch[elima@mercury arch]$ exit
+exit
+
+Script done on Mon 13 Sep 2010 12:34:14 AM EDT

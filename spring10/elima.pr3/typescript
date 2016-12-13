@@ -1,0 +1,16 @@
+Script started on Wed 28 Apr 2010 11:09:48 PM EDT
+]0;elima@mercury:~/programs/spring10/elima.pr3[elima@mercury elima.pr3]$ make
+g++ -c -Wall main.cpp
+g++ -o project3 main.o node.o tree.o treeADT.o treeIFC.o
+]0;elima@mercury:~/programs/spring10/elima.pr3[elima@mercury elima.pr3]$ ls
+[00m[00mmain.cpp[00m   [00mmain.o[00m    [00mMakefile~[00m  [00mnode.cpp~[00m  [00mnode.h~[00m  [00;32mproject3[00m     [00mtreeADT.cpp~[00m  [00mtreeADT.h~[00m  [00mtree.cpp[00m   [00mtree.h[00m   [00mtreeIFC.cpp[00m  [00mtreeIFC.o[00m  [00mtypescript[00m
+[00mmain.cpp~[00m  [00mMakefile[00m  [00mnode.cpp[00m   [00mnode.h[00m     [00mnode.o[00m   [00mtreeADT.cpp[00m  [00mtreeADT.h[00m     [00mtreeADT.o[00m   [00mtree.cpp~[00m  [00mtree.h~[00m  [00mtreeIFC.h[00m    [00mtree.o[00m     [00;35mUMLdiagram.png[00m
+[m]0;elima@mercury:~/programs/spring10/elima.pr3[elima@mercury elima.pr3]$ project3
+A tree with the following parameters is being made. ( 1, 7 )
+The dfs of the tree is 7
+A tree with the following parameters is being made. ( 0 ) 
+A size 10 array implemented tree has been made.  
+]0;elima@mercury:~/programs/spring10/elima.pr3[elima@mercury elima.pr3]$ exit
+exit
+
+Script done on Wed 28 Apr 2010 11:10:07 PM EDT

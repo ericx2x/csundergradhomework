@@ -1,0 +1,42 @@
+
+int a;
+int b;
+
+a = t0;
+
+loop {
+ a = a - 1;
+ break;
+ }
+ 
+loop while (a + 1) {
+
+b = 0;
+
+}
+ 
+ 
+loop {
+ a = a - 1;
+ 
+ } until (a==5)
+ 
+ for a (0 : 10)
+ {
+  b = 0;
+  
+ }
+
+loop while (a != b)
+{
+b = 3;
+}  
+  
+System.Scribbler.wait(0);
+
+System.Scribbler.input(a, b);
+
+System.Scribbler.senseStall(a);
+
+System.Scribbler.senseLight(a, b, c);
+  

@@ -1,0 +1,16 @@
+World myworld = new World();
+Turtle star = new Turtle(200, 200, myworld);
+star.turn(30);
+star.forward(200);
+
+star.turn(120);
+star.forward(200);
+
+star.turn(150);
+star.forward(240);
+
+star.turn(150);
+star.forward(220);
+
+star.turn(150);
+star.forward(240);

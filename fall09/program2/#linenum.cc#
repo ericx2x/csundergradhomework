@@ -1,0 +1,30 @@
+/***************************************/
+/* Eric Lima                           */
+/*				       */
+/* Linenum Program                     */
+/*		                       */
+/* October 13, 2009                    */
+/***************************************/
+
+
+#include <fstream>
+#include <iostream>
+#include <string>
+#include <iomanip>
+
+using namespace std;
+
+int main( int argc, char *argv[] ) {
+
+  ifstream infile( argv[1] ); // retrieve file from command line
+  int i = 1;
+  string s1;
+
+  while ( getline( infile, s1 ) ) 
+    cout << i++ << setw( s1.size() + 8 ) << s1 << endl; //buffer 8 spaces between line number and text
+    
+
+  infile.close(); //close file
+
+  return 0;
+}

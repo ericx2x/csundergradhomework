@@ -1,0 +1,10 @@
+
+/* Complex.h */
+
+#ifndef_complex
+#define_complex
+
+typedef struct complex {double r ; double im; } complex;
+
+extern complex ADD_complex(complex A, complex B) ;
+extern complex MULT_complex(complex A, complex B) ;

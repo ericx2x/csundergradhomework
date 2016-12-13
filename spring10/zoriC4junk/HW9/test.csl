@@ -1,0 +1,45 @@
+int i;
+int led1;
+int led2;
+int led3;
+int a;
+int l1;
+int l2;
+int l3;
+     
+for i ( 1 : 10) {
+  led1 = i%2;
+  led2 = (i/2)%2;
+  led3 = (i/4)%3;
+  System.Scribbler.setLED(led3, led2, led1);
+  System.Scribbler.print("i is: ", i);
+  System.Scribbler.wait(1000);
+}
+     
+System.Scribbler.print("now i am done");
+     
+loop {
+  System.Scribbler.senseLight(l1, l2, l3);
+  System.Scribbler.print("light: ", l1, ", ", l2, ", ", l3);
+  System.Scribbler.wait(500);
+     
+  System.Scribbler.senseStall(a);
+  
+  if (a) {
+    System.Scribbler.print("stalled: a=", a);
+  } else {
+    System.Scribbler.print("not stalled: a=", a);
+  }
+}
+    
+loop {
+  System.Scribbler.moveForward(3, 3);
+  System.Scribbler.wait(1000);
+  System.Scribbler.stop();
+  System.Scribbler.moveBackward(3, 3);
+  System.Scribbler.wait(1000);
+  System.Scribbler.stop();
+  System.Scribbler.print("stopped");
+  System.Scribbler.wait(3000);
+}
+     

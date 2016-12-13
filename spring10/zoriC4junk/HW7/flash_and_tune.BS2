@@ -1,0 +1,231 @@
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+'Zori Babroudi
+
+'---[Pin Definitions]----------------------------------------------------------
+
+LightRight      PIN 0
+LightCenter     PIN 1
+LightLeft       PIN 2
+LineEnable      PIN 3
+LineRight       PIN 4
+LineLeft        PIN 5
+ObsRx           PIN 6
+Stall           PIN 7
+LedRight        PIN 8
+LedCenter       PIN 9
+LedLeft         PIN 10
+Speaker         PIN 11
+MotorRight      PIN 12
+MotorLeft       PIN 13
+ObsTxRight      PIN 14
+ObsTxLeft       PIN 15
+
+'---[Pin Initializations]------------------------------------------------------
+
+OUTS = %0000000000000111
+DIRS = %1111111100000000
+
+'---[Global Variables]---------------------------------------------------------
+
+ScrW0           VAR W0
+ScrW1           VAR W1
+
+ScrB0           VAR ScrW0.LOWBYTE
+ScrB1           VAR ScrW0.HIGHBYTE
+ScrB2           VAR ScrW1.LOWBYTE
+ScrB3           VAR ScrW1.HIGHBYTE
+
+ScrN0           VAR ScrB0.LOWNIB
+ScrN1           VAR ScrB0.HIGHNIB
+ScrN2           VAR ScrB1.LOWNIB
+ScrN3           VAR ScrB1.HIGHNIB
+
+ScrT0           VAR ScrB3.BIT0
+ScrT1           VAR ScrB3.BIT1
+ScrT2           VAR ScrB3.BIT2
+ScrT3           VAR ScrB3.BIT3
+ScrT4           VAR ScrB3.BIT4
+ScrT5           VAR ScrB3.BIT5
+ScrT6           VAR ScrB3.BIT6
+ScrT7           VAR ScrB3.BIT7
+
+Moves           VAR ScrB0
+
+MoveRight       VAR ScrB0
+MoveLeft        VAR ScrB1
+MoveTime        VAR ScrB2
+
+ResetCount      VAR ScrN0
+
+CoinFlip        VAR W2
+
+Lights          VAR B6
+
+RightLight      VAR B6
+CenterLight     VAR B7
+LeftLight       VAR B8
+
+RefLights       VAR B9
+
+RefRightLight   VAR B9
+RefCenterLight  VAR B10
+RefLeftLight    VAR B11
+
+Counter0        VAR B12
+Counter1        VAR B13
+Counter2        VAR B14
+Counter3        VAR B15
+Counter4        VAR B16
+Counter5        VAR B17
+
+Reserved0       VAR B18
+Reserved1       VAR B19
+Reserved2       VAR B20
+
+Motors          VAR B21
+
+RightMotor      VAR B21
+LeftMotor       VAR B22
+
+LineCount       VAR B23.HIGHNIB
+ObstacleCount   VAR B23.LOWNIB
+StallCount      VAR B24.HIGHNIB
+
+LeftLine        VAR B24.BIT3
+RightLine       VAR B24.BIT2
+
+LeftObstacle    VAR B24.BIT1
+RightObstacle   VAR B24.BIT0
+
+Flags           VAR B25
+
+Flag_green      VAR Flags.BIT7
+Flag_yellow     VAR Flags.BIT6
+Flag_orange     VAR Flags.BIT5
+Flag_red        VAR Flags.BIT4
+Flag_magenta    VAR Flags.BIT3
+Flag_purple     VAR Flags.BIT2
+Flag_blue       VAR Flags.BIT1
+Stalled         VAR Flags.BIT0
+
+'---[Protect Calibration Data in EEPROM]---------------------------------------
+
+DATA @0, (16)
+
+'---[Count Reset Button Presses]-----------------------------------------------
+
+READ 15, ResetCount
+WRITE 15, ResetCount + 1 MAX 15
+PAUSE 500
+WRITE 15, 0
+
+'---[Variable Initialization]--------------------------------------------------
+
+LeftMotor = 128
+RightMotor = 128
+
+'---[Check Calibration Values and Repair]--------------------------------------
+
+FOR ScrN1 = 0 TO 4 STEP 4
+  ScrB1 = 0
+  FOR ScrB2 = ScrN1 TO ScrN1 + 3
+    READ ScrB2, ScrB3
+    ScrB1 = ScrB1 + ScrB3
+  NEXT
+  IF (ScrB1) THEN
+    FOR ScrB2 = ScrN1 TO ScrN1 + 3
+      WRITE ScrB2, 128 << ScrN1
+    NEXT
+  ENDIF
+NEXT
+
+'---[Initialize Random Number Generator]---------------------------------------
+
+HIGH LightLeft
+PAUSE 1
+RCTIME LightLeft, 1, CoinFlip
+
+'---[Actual Code]---------------------------------------------------------------
+
+Main:
+
+  FOR Counter0 = 1 TO 30
+    HIGH LedLeft
+    HIGH LedRight
+    HIGH LedCenter
+    PAUSE 1000
+    GOTO Tune
+Looper:
+    NEXT
+
+    DEBUG "DONE"
+
+  END
+
+Tune:
+
+    FREQOUT Speaker, 550, 1000
+    FREQOUT Speaker, 550, 1200
+    FREQOUT Speaker, 500, 1300
+    FREQOUT Speaker, 550, 1500
+    FREQOUT Speaker, 500, 1200
+    FREQOUT Speaker, 550, 1300
+    FREQOUT Speaker, 500, 1000
+
+
+    HIGH LedLeft
+    PAUSE 125
+    HIGH LedCenter
+    PAUSE 125
+    HIGH LedRight
+    FREQOUT Speaker, 125, 523
+    PAUSE 125
+    LOW LedCenter
+    FREQOUT Speaker, 125, 523
+    PAUSE 125
+    FREQOUT Speaker, 125, 523
+    PAUSE 125
+    HIGH LedCenter
+    FREQOUT Speaker, 125, 523
+    PAUSE 375
+    FREQOUT Speaker, 125, 523
+    PAUSE 375
+    LOW LedRight
+    FREQOUT Speaker, 125, 523
+    PAUSE 125
+    FREQOUT Speaker, 375, 523
+    PAUSE 125
+    FREQOUT Speaker, 125, 523
+    PAUSE 125
+    FREQOUT Speaker, 125, 523
+    PAUSE 375
+    HIGH LedRight
+    FREQOUT Speaker, 125, 523
+    PAUSE 125
+    FREQOUT Speaker, 375, 523
+    PAUSE 125
+    LOW LedLeft
+    FREQOUT Speaker, 125, 523
+    PAUSE 125
+    FREQOUT Speaker, 125, 523
+    HIGH LedLeft
+    PAUSE 375
+    FREQOUT Speaker, 375, 523
+    PAUSE 125
+    FREQOUT Speaker, 375, 523
+    PAUSE 125
+    FREQOUT Speaker, 375, 523
+    PAUSE 375
+    LOW LedRight
+    PAUSE 125
+    LOW LedLeft
+    PAUSE 125
+    LOW LedCenter
+    PAUSE 125
+
+
+GOTO Looper
+
+'---[End of Program]-----------------------------------------------------------

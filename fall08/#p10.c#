@@ -1,0 +1,33 @@
+/***********************************************/
+/* Programmer: Eric Joesph Lima                */
+/*                                             */
+/* Program 10: Sum of Five                     */
+/*                                             */
+/* Approximate completion time: 27 minutes     */
+/***********************************************/
+
+#include <stdio.h>
+
+int main( int argc, char *argv[] ) {
+
+  FILE *fin ;
+
+  int num , j , k = 0 ;
+
+  fin = fopen( "testdata10" , "r" ) ;
+
+  for( j = 0 ; j < 5 ; j++ ) {
+
+    fscanf( fin , "%d" , &num ) ;
+
+    k = k + num ; 
+
+  }
+
+  printf( "\n\n%d\n\n" , k ) ;
+
+  fclose( fin ) ;
+
+  return 0 ;
+
+}

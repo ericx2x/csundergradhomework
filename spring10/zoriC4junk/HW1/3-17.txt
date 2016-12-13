@@ -1,0 +1,35 @@
+World myworld = new World();
+Turtle pyr = new Turtle(myworld);
+pyr.forward(200);
+pyr.turnRight();
+pyr.forward(200);
+pyr.turnRight();
+pyr.forward(200);
+pyr.turnRight();
+pyr.forward(200);
+
+pyr.turn(180-45);
+pyr.forward(89);
+pyr.turn(45);
+pyr.forward(75);
+
+pyr.turn(45);
+pyr.forward(89);
+pyr.backward(89);
+pyr.turn(-45);
+pyr.turnLeft();
+pyr.forward(75);
+
+pyr.turn(45);
+pyr.forward(89);
+pyr.backward(89);
+pyr.turn(-45);
+pyr.turnLeft();
+pyr.forward(75);
+
+pyr.turn(45);
+pyr.forward(89);
+pyr.backward(89);
+pyr.turn(-45);
+pyr.turnLeft();
+pyr.forward(75);

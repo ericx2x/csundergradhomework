@@ -1,0 +1,136 @@
+Script started on Thu 18 Feb 2010 03:22:53 PM EST
+]0;elima@mercury:~/programs/spring10/exersises1[elima@mercury exersises1]$ asdfasdg
+bash: asdfasdg: command not found
+]0;elima@mercury:~/programs/spring10/exersises1[elima@mercury exersises1]$ e 2-7[K4.cc
+7[?47h[?1h=[70;1H[7m----:---F1  [m[m[7m[1m*scratch*   [m[m[7m      (Fundamental)--L1--All-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------[m[m
+[A[H[71;1HLoading disp-table...[K[H[71;22Hdone[H[H[2J[71;1HLoading /usr/share/emacs/site-lisp/site-start.d/lang-coding-systems-init.el (source)...[K[H
+[H[2J[71;1HLoading encoded-kb...[K[H
+[71;22Hdone[H
+[71;1H[K[?1l>[2J[?47l8[m7[?47h[?1h=[71;1HLoading /usr/share/emacs/site-lisp/site-start.d/lang-coding-systems-init.el (source)...done[K[H
+[71;49Hphp-mode-init.el (source)...[K[H
+[71;77Hdone[H
+[71;50Ho-mode-init.el (source)...[K[H
+[71;76Hdone[H
+[71;50Hsgml-init.el (source)...[K[H
+[71;74Hdone[H
+[71;50Hython-mode-init.el (source)...[H
+[71;80Hdone[H
+[71;49Hrpm-spec-mode-init.el (source)...[K[H
+[71;82Hdone[H
+[71;50Huby-mode-init.el (source)...[K[H
+[71;78Hdone[H
+[71;9Hfont-lock...[K[H
+[71;1HLoading regexp-opt...[K[H
+[71;22Hdone[H
+[71;9Hfont-lock...done[K[H
+[71;9Hjka-compr...[K[H
+[71;21Hdone[H
+[71;1HFor information about the GNU Project and its goals, type C-h C-p.[H
+[71;1HLoading cc-mode...[K[H
+[71;1HLoading image...[K[H
+[71;17Hdone[H
+[71;9Hcc-m[4hod[H
+[4l[71;1HLoading cc-mode...done[K[H[7mFile Edit Options Buffers Tools C++ Help                                                                                                                                                                                                                                           [m[m
+[A
+[31m/*******************************/[m[K
+[31m/* Eric Lima                   */[m[K
+[31m/*                             */[m[K
+[31m/* Exercise 2-4                */[m[K
+[31m/*                             */[m[K
+[31m/* Feb 12, 2010                */[m[K
+[31m/*******************************/[m[K
+[K
+#[34minclude[m[m [32m<iostream>[m[K
+#[34minclude[m[m [32m<fstream>[m[K
+#[34minclude[m[m [32m<string>[m[K
+[K
+[1m[36musing[m[m [1m[36mnamespace[m[m [33mstd[m[m;[K
+[K
+[32mint main[m ( [32mint argc[m, [32mchar *argv[m[] ) {[K
+[K
+  [32mint linecount[m = 1, [33mlinecount2[m[m = 1;[K
+[K
+  [32mifstream file1[m, [33mfile2[m[m;[K
+[K
+  [1m[36mif[m[m ( argc == 4 ) {[K
+[K
+    [32mchar w[m, [33mx[m[m;[K
+[K
+    file1.open( argv[2] );[K
+    file2.open( argv[3] );[K
+[K
+    w = file1.get();[K
+    x = file2.get();[K
+[K
+    [1m[36mwhile[m[m ( w != EOF && x != EOF ) {[K
+      [1m[36mif[m[m ( w != x ) {[K
+        cout << [32m"Files are not equal."[m << endl;[K
+        [1m[36mbreak[m[m;[K
+      }[K
+      w = file1.get();[K
+      x = file2.get();[K
+    }[K
+    [1m[36mif[m[m ( w != x )[K
+    cout << [32m"These are definitely not equal."[m << endl;[K
+[K
+    [1m[36mif[m[m ( w == x )[K
+      cout << [32m"Files are equal."[m << endl;[K
+  }[K
+[K
+  [1m[36melse[m[m {[K
+[K
+    [32mstring y[m, [33mz[m[m;[K
+[K
+    file1.open( argv[1] );[K
+    file2.open( argv[2] );[K
+[K
+    getline(file1, y);[K
+    getline(file2, z);[K
+[K
+    [1m[36mwhile[m[m ( !file1.eof() || !file2.eof() ) {[K
+[K
+      [1m[36mif[m[m ( y != z ) {[K
+        cout << [32m"Line "[m << linecount << [32m" is not equal in the files."[m << endl;[K
+      }[K
+[K
+      getline(file1,y);[K
+      getline(file2,z);[K
+[K
+    }[K
+    [1m[36mif[m[m ( y != z )[K
+      cout << [32m"Are not equal."[m << endl;[K
+[K
+[7m-uu-:---F1  [m[m[7m[1m2-4.cc      [m[m[7m      (C++ Abbrev)--L1--Top--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------[m[m
+[A[H
+[71;1H[K[H
+[71;1H(No files need saving)[H
+[71;1H[K[?1l>[2J[?47l8[m]0;elima@mercury:~/programs/spring10/exersises1[elima@mercury exersises1]$ dlk[K[K[Ka.out 
+bash: ./a.out: cannot execute binary file
+]0;elima@mercury:~/programs/spring10/exersises1[elima@mercury exersises1]$ g++ 3-2/c[K[K.cc
+3-2.cc: In member function `Fraction Fraction::Add(Fraction, Fraction)':
+3-2.cc:56: error: `tmp' was not declared in this scope
+3-2.cc: In member function `Fraction Fraction::Divide(Fraction, Fraction)':
+3-2.cc:124: error: `c' was not declared in this scope
+3-2.cc: In function `int main(int, char**)':
+3-2.cc:41: error: `Fraction Fraction::Add(Fraction, Fraction)' is private
+3-2.cc:148: error: within this context
+3-2.cc:151: error: expected primary-expression before '<<' token
+3-2.cc:70: error: `Fraction Fraction::Subtract(Fraction, Fraction)' is private
+3-2.cc:153: error: within this context
+3-2.cc:156: error: expected primary-expression before '<<' token
+3-2.cc:98: error: `Fraction Fraction::Multiply(Fraction, Fraction)' is private
+3-2.cc:158: error: within this context
+3-2.cc:161: error: expected primary-expression before '<<' token
+3-2.cc:115: error: `Fraction Fraction::Divide(Fraction, Fraction)' is private
+3-2.cc:163: error: within this context
+3-2.cc:166: error: expected primary-expression before '<<' token
+]0;elima@mercury:~/programs/spring10/exersises1[elima@mercury exersises1]$ g++ 3-2.cc[elima@mercury exersises1]$ g++ 3[1P-2.cc2-2.cc[elima@mercury exersises1]$ g++ 2-12.cc
+]0;elima@mercury:~/programs/spring10/exersises1[elima@mercury exersises1]$ a.out 
+Enter 5 integers, please.
+5 54  2 3 1
+The largest int with references is 5
+The largest int with pointers is -1074377864
+]0;elima@mercury:~/programs/spring10/exersises1[elima@mercury exersises1]$ exit
+exit
+
+Script done on Thu 18 Feb 2010 03:24:14 PM EST

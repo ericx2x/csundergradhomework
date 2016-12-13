@@ -1,0 +1,9 @@
+3.9 How many and what kind of variables (primitive or object) are created in the code below?
+
+> double cost = 19.20;
+> double percentOff = 0.4;
+> double salePrice = cost * (1.0 - percentOff);
+ 
+Answer:
+
+3 doubles (primitives).

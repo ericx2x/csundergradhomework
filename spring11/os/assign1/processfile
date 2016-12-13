@@ -1,0 +1,22 @@
+Parent process report:
+
+PARENT: Process parent ID is -          17445
+PARENT: Process Parent ID -     16230
+PARENT: Real UID -              21238
+PARENT: REAL GID -              2012
+PARENT: Effective UID -         21238
+PARENT: Effective GID -         2012
+PARENT: Process Priority -      0
+
+Child process report:
+
+CHILD: Process ID -             17446
+CHILD: Process Parent ID -      17445
+CHILD: Real UID -               21238
+CHILD: REAL GID -               2012
+CHILD: Effective UID -          21238
+CHILD: Effective GID -          2012
+CHILD: Process Priority -       0
+
+Child: About to write pipe and goto endless loop.
+Created child with pid 17446

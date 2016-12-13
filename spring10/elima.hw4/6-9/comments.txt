@@ -1,0 +1,1 @@
+In Müldner's solution, at the top of e6.9-mystring.h, I've explained what exactly the adapter pattern does. Muldners solution works pretty straight forward..

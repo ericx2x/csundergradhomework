@@ -1,0 +1,173 @@
+Read in 154 micro instructions
+Read in 251 machine instructions
+Starting PC is : 0000000000000000  base 10:       0
+Starting SP is : 0000010000000000  base 10:    1024
+
+Please enter 2 integers between 1 and 32767:
+235
+0
+Sum:
+235
+
+ProgramCounter : 0000000000000011  base 10:       3
+Accumulator    : 0000000000000000  base 10:       0
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 1000000000000000  base 10:   32768
+StackPointer   : 0000010000000000  base 10:    1024
+ARegister      : 1111111111110101  base 10:   65525
+BRegister      : 1111111111110110  base 10:   65526
+CRegister      : 0000000000000000  base 10:       0
+DRegister      : 0000000000000010  base 10:       2
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 121014
+
+Type decimal address to view memory,  q  to quit or  c  to continue: 201
+     the location  201 has value 0000000011101011 , or   235  or signed    235
+Type  <Enter>  to continue debugging
+Type        q  to quit
+Type        f for forward range
+Type        b for backward range:
+
+
+------------------
+
+Read in 154 micro instructions
+Read in 251 machine instructions
+Starting PC is : 0000000000000000  base 10:       0
+Starting SP is : 0000010000000000  base 10:    1024
+
+Please enter 2 integers between 1 and 32767:
+16341
+957
+Sum:
+17298
+
+ProgramCounter : 0000000000000011  base 10:       3
+Accumulator    : 0000000000000000  base 10:       0
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 1000000000000000  base 10:   32768
+StackPointer   : 0000010000000000  base 10:    1024
+ARegister      : 1111111111110101  base 10:   65525
+BRegister      : 1111111111110110  base 10:   65526
+CRegister      : 0000000000000000  base 10:       0
+DRegister      : 0000000000000001  base 10:       1
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 171262
+
+Type decimal address to view memory,  q  to quit or  c  to continue: 201
+     the location  201 has value 0000000011101011 , or   235  or signed    17298
+Type  <Enter>  to continue debugging
+Type        q  to quit
+Type        f for forward range
+Type        b for backward range:
+
+
+-----------------
+
+
+Read in 154 micro instructions
+Read in 251 machine instructions
+Starting PC is : 0000000000000000  base 10:       0
+Starting SP is : 0000010000000000  base 10:    1024
+
+Please enter 2 integers between 1 and 32767:
+23786
+12400
+Overflow!
+
+ProgramCounter : 0000000000000011  base 10:       3
+Accumulator    : 1111111111111111  base 10:   65535
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 1000000000000000  base 10:   32768
+StackPointer   : 0000010000000000  base 10:    1024
+ARegister      : 1111111111111110  base 10:   65534
+BRegister      : 0000001111101000  base 10:    1000
+CRegister      : 0010011100010000  base 10:   10000
+DRegister      : 0000000000000000  base 10:       0
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 178316
+
+Type decimal address to view memory,  q  to quit or  c  to continue: 201
+     the location  201 has value 0000000000000000 , or     0  or signed      0
+Type  <Enter>  to continue debugging
+Type        q  to quit
+Type        f for forward range
+Type        b for backward range:
+
+
+-----------------
+
+
+Read in 154 micro instructions
+Read in 251 machine instructions
+Starting PC is : 0000000000000000  base 10:       0
+Starting SP is : 0000010000000000  base 10:    1024
+
+Please enter 2 integers between 1 and 32767:
+12
+23
+Sum:
+35
+
+ProgramCounter : 0000000000000011  base 10:       3
+Accumulator    : 0000000000000000  base 10:       0
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 1000000000000000  base 10:   32768
+StackPointer   : 0000010000000000  base 10:    1024
+ARegister      : 1111111111110101  base 10:   65525
+BRegister      : 1111111111110110  base 10:   65526
+CRegister      : 0000000000000000  base 10:       0
+DRegister      : 0000000000000011  base 10:       3
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 65027
+
+Type decimal address to view memory,  q  to quit or  c  to continue: 201
+     the location  201 has value 0000000000100011 , or    35  or signed     35
+Type  <Enter>  to continue debugging
+Type        q  to quit
+Type        f for forward range
+Type        b for backward range:
+
+
+-----------------
+
+
+Read in 154 micro instructions
+Read in 251 machine instructions
+Starting PC is : 0000000000000000  base 10:       0
+Starting SP is : 0000010000000000  base 10:    1024
+
+Please enter 2 integers between 1 and 32767:
+1
+1343
+Sum:
+1344
+
+ProgramCounter : 0000000000000011  base 10:       3
+Accumulator    : 0000000000000000  base 10:       0
+InstructionReg : 1111111111000000  base 10:   65472
+TempInstr      : 1000000000000000  base 10:   32768
+StackPointer   : 0000010000000000  base 10:    1024
+ARegister      : 1111111111110101  base 10:   65525
+BRegister      : 1111111111110110  base 10:   65526
+CRegister      : 0000000000000000  base 10:       0
+DRegister      : 0000000000000001  base 10:       1
+ERegister      : 0000000000000000  base 10:       0
+FRegister      : 0000000000000000  base 10:       0
+
+Total cycles   : 81705
+
+Type decimal address to view memory,  q  to quit or  c  to continue: 201
+     the location  201 has value 0000010101000000 , or  1344  or signed   1344
+Type  <Enter>  to continue debugging
+Type        q  to quit
+Type        f for forward range
+Type        b for backward range:

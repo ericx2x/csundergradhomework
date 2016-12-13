@@ -1,0 +1,797 @@
+%!PS-Adobe-3.0
+%%BoundingBox: 24 24 588 768
+%%Title: Enscript Output
+%%For: Eric Lima
+%%Creator: GNU enscript 1.6.1
+%%CreationDate: Fri May  1 10:23:58 2009
+%%Orientation: Portrait
+%%Pages: (atend)
+%%DocumentMedia: Letter 612 792 0 () ()
+%%DocumentNeededResources: (atend)
+%%EndComments
+%%BeginProlog
+%%BeginResource: procset Enscript-Prolog 1.6 1
+%
+% Procedures.
+%
+
+/_S {	% save current state
+  /_s save def
+} def
+/_R {	% restore from saved state
+  _s restore
+} def
+
+/S {	% showpage protecting gstate
+  gsave
+  showpage
+  grestore
+} bind def
+
+/MF {	% fontname newfontname -> -	make a new encoded font
+  /newfontname exch def
+  /fontname exch def
+
+  /fontdict fontname findfont def
+  /newfont fontdict maxlength dict def
+
+  fontdict {
+    exch
+    dup /FID eq {
+      % skip FID pair
+      pop pop
+    } {
+      % copy to the new font dictionary
+      exch newfont 3 1 roll put
+    } ifelse
+  } forall
+
+  newfont /FontName newfontname put
+
+  % insert only valid encoding vectors
+  encoding_vector length 256 eq {
+    newfont /Encoding encoding_vector put
+  } if
+
+  newfontname newfont definefont pop
+} def
+
+/SF { % fontname width height -> -	set a new font
+  /height exch def
+  /width exch def
+
+  findfont
+  [width 0 0 height 0 0] makefont setfont
+} def
+
+/SUF { % fontname width height -> -	set a new user font
+  /height exch def
+  /width exch def
+
+  /F-gs-user-font MF
+  /F-gs-user-font width height SF
+} def
+
+/M {moveto} bind def
+/s {show} bind def
+
+/Box {	% x y w h -> -			define box path
+  /d_h exch def /d_w exch def /d_y exch def /d_x exch def
+  d_x d_y  moveto
+  d_w 0 rlineto
+  0 d_h rlineto
+  d_w neg 0 rlineto
+  closepath
+} def
+
+/bgs {	% x y height blskip gray str -> -	show string with bg color
+  /str exch def
+  /gray exch def
+  /blskip exch def
+  /height exch def
+  /y exch def
+  /x exch def
+
+  gsave
+    x y blskip sub str stringwidth pop height Box
+    gray setgray
+    fill
+  grestore
+  x y M str s
+} def
+
+% Highlight bars.
+/highlight_bars {	% nlines lineheight output_y_margin gray -> -
+  gsave
+    setgray
+    /ymarg exch def
+    /lineheight exch def
+    /nlines exch def
+
+    % This 2 is just a magic number to sync highlight lines to text.
+    0 d_header_y ymarg sub 2 sub translate
+
+    /cw d_output_w cols div def
+    /nrows d_output_h ymarg 2 mul sub lineheight div cvi def
+
+    % for each column
+    0 1 cols 1 sub {
+      cw mul /xp exch def
+
+      % for each rows
+      0 1 nrows 1 sub {
+        /rn exch def
+        rn lineheight mul neg /yp exch def
+        rn nlines idiv 2 mod 0 eq {
+	  % Draw highlight bar.  4 is just a magic indentation.
+	  xp 4 add yp cw 8 sub lineheight neg Box fill
+	} if
+      } for
+    } for
+
+  grestore
+} def
+
+% Line highlight bar.
+/line_highlight {	% x y width height gray -> -
+  gsave
+    /gray exch def
+    Box gray setgray fill
+  grestore
+} def
+
+% Column separator lines.
+/column_lines {
+  gsave
+    .1 setlinewidth
+    0 d_footer_h translate
+    /cw d_output_w cols div def
+    1 1 cols 1 sub {
+      cw mul 0 moveto
+      0 d_output_h rlineto stroke
+    } for
+  grestore
+} def
+
+% Column borders.
+/column_borders {
+  gsave
+    .1 setlinewidth
+    0 d_footer_h moveto
+    0 d_output_h rlineto
+    d_output_w 0 rlineto
+    0 d_output_h neg rlineto
+    closepath stroke
+  grestore
+} def
+
+% Do the actual underlay drawing
+/draw_underlay {
+  ul_style 0 eq {
+    ul_str true charpath stroke
+  } {
+    ul_str show
+  } ifelse
+} def
+
+% Underlay
+/underlay {	% - -> -
+  gsave
+    0 d_page_h translate
+    d_page_h neg d_page_w atan rotate
+
+    ul_gray setgray
+    ul_font setfont
+    /dw d_page_h dup mul d_page_w dup mul add sqrt def
+    ul_str stringwidth pop dw exch sub 2 div ul_h_ptsize -2 div moveto
+    draw_underlay
+  grestore
+} def
+
+/user_underlay {	% - -> -
+  gsave
+    ul_x ul_y translate
+    ul_angle rotate
+    ul_gray setgray
+    ul_font setfont
+    0 0 ul_h_ptsize 2 div sub moveto
+    draw_underlay
+  grestore
+} def
+
+% Page prefeed
+/page_prefeed {		% bool -> -
+  statusdict /prefeed known {
+    statusdict exch /prefeed exch put
+  } {
+    pop
+  } ifelse
+} def
+
+% Wrapped line markers
+/wrapped_line_mark {	% x y charwith charheight type -> -
+  /type exch def
+  /h exch def
+  /w exch def
+  /y exch def
+  /x exch def
+
+  type 2 eq {
+    % Black boxes (like TeX does)
+    gsave
+      0 setlinewidth
+      x w 4 div add y M
+      0 h rlineto w 2 div 0 rlineto 0 h neg rlineto
+      closepath fill
+    grestore
+  } {
+    type 3 eq {
+      % Small arrows
+      gsave
+        .2 setlinewidth
+        x w 2 div add y h 2 div add M
+        w 4 div 0 rlineto
+        x w 4 div add y lineto stroke
+
+        x w 4 div add w 8 div add y h 4 div add M
+        x w 4 div add y lineto
+	w 4 div h 8 div rlineto stroke
+      grestore
+    } {
+      % do nothing
+    } ifelse
+  } ifelse
+} def
+
+% EPSF import.
+
+/BeginEPSF {
+  /b4_Inc_state save def    		% Save state for cleanup
+  /dict_count countdictstack def	% Count objects on dict stack
+  /op_count count 1 sub def		% Count objects on operand stack
+  userdict begin
+  /showpage { } def
+  0 setgray 0 setlinecap
+  1 setlinewidth 0 setlinejoin
+  10 setmiterlimit [ ] 0 setdash newpath
+  /languagelevel where {
+    pop languagelevel
+    1 ne {
+      false setstrokeadjust false setoverprint
+    } if
+  } if
+} bind def
+
+/EndEPSF {
+  count op_count sub { pos } repeat	% Clean up stacks
+  countdictstack dict_count sub { end } repeat
+  b4_Inc_state restore
+} bind def
+
+% Check PostScript language level.
+/languagelevel where {
+  pop /gs_languagelevel languagelevel def
+} {
+  /gs_languagelevel 1 def
+} ifelse
+%%EndResource
+%%BeginResource: procset Enscript-Encoding-88591 1.6 1
+/encoding_vector [
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/space        	/exclam       	/quotedbl     	/numbersign   	
+/dollar       	/percent      	/ampersand    	/quoteright   	
+/parenleft    	/parenright   	/asterisk     	/plus         	
+/comma        	/hyphen       	/period       	/slash        	
+/zero         	/one          	/two          	/three        	
+/four         	/five         	/six          	/seven        	
+/eight        	/nine         	/colon        	/semicolon    	
+/less         	/equal        	/greater      	/question     	
+/at           	/A            	/B            	/C            	
+/D            	/E            	/F            	/G            	
+/H            	/I            	/J            	/K            	
+/L            	/M            	/N            	/O            	
+/P            	/Q            	/R            	/S            	
+/T            	/U            	/V            	/W            	
+/X            	/Y            	/Z            	/bracketleft  	
+/backslash    	/bracketright 	/asciicircum  	/underscore   	
+/quoteleft    	/a            	/b            	/c            	
+/d            	/e            	/f            	/g            	
+/h            	/i            	/j            	/k            	
+/l            	/m            	/n            	/o            	
+/p            	/q            	/r            	/s            	
+/t            	/u            	/v            	/w            	
+/x            	/y            	/z            	/braceleft    	
+/bar          	/braceright   	/tilde        	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/.notdef      	/.notdef      	/.notdef      	/.notdef      	
+/space        	/exclamdown   	/cent         	/sterling     	
+/currency     	/yen          	/brokenbar    	/section      	
+/dieresis     	/copyright    	/ordfeminine  	/guillemotleft	
+/logicalnot   	/hyphen       	/registered   	/macron       	
+/degree       	/plusminus    	/twosuperior  	/threesuperior	
+/acute        	/mu           	/paragraph    	/bullet       	
+/cedilla      	/onesuperior  	/ordmasculine 	/guillemotright	
+/onequarter   	/onehalf      	/threequarters	/questiondown 	
+/Agrave       	/Aacute       	/Acircumflex  	/Atilde       	
+/Adieresis    	/Aring        	/AE           	/Ccedilla     	
+/Egrave       	/Eacute       	/Ecircumflex  	/Edieresis    	
+/Igrave       	/Iacute       	/Icircumflex  	/Idieresis    	
+/Eth          	/Ntilde       	/Ograve       	/Oacute       	
+/Ocircumflex  	/Otilde       	/Odieresis    	/multiply     	
+/Oslash       	/Ugrave       	/Uacute       	/Ucircumflex  	
+/Udieresis    	/Yacute       	/Thorn        	/germandbls   	
+/agrave       	/aacute       	/acircumflex  	/atilde       	
+/adieresis    	/aring        	/ae           	/ccedilla     	
+/egrave       	/eacute       	/ecircumflex  	/edieresis    	
+/igrave       	/iacute       	/icircumflex  	/idieresis    	
+/eth          	/ntilde       	/ograve       	/oacute       	
+/ocircumflex  	/otilde       	/odieresis    	/divide       	
+/oslash       	/ugrave       	/uacute       	/ucircumflex  	
+/udieresis    	/yacute       	/thorn        	/ydieresis    	
+] def
+%%EndResource
+%%EndProlog
+%%BeginSetup
+%%IncludeResource: font Courier-Bold
+%%IncludeResource: font Courier
+/HFpt_w 10 def
+/HFpt_h 10 def
+/Courier-Bold /HF-gs-font MF
+/HF /HF-gs-font findfont [HFpt_w 0 0 HFpt_h 0 0] makefont def
+/Courier /F-gs-font MF
+/F-gs-font 8 8 SF
+/#copies 1 def
+% Pagedevice definitions:
+gs_languagelevel 1 gt {
+  <<
+    /PageSize [612 792] 
+  >> setpagedevice
+} if
+%%BeginResource: procset Enscript-Header-simple 1.6 1
+
+/do_header {	% print default simple header
+  gsave
+    d_header_x d_header_y HFpt_h 3 div add translate
+
+    HF setfont
+    user_header_p {
+      5 0 moveto user_header_left_str show
+
+      d_header_w user_header_center_str stringwidth pop sub 2 div
+      0 moveto user_header_center_str show
+
+      d_header_w user_header_right_str stringwidth pop sub 5 sub
+      0 moveto user_header_right_str show
+    } {
+      fname length fmodstr length add pagenumstr length add 95 6 idiv add d_header_w 6 idiv le{
+        5 0 moveto fname show
+        45 0 rmoveto fmodstr show
+        45 0 rmoveto pagenumstr show
+      } {
+        5 0 moveto fmodstr show
+        45 0 rmoveto pagenumstr show
+        fname length d_header_w 6 idiv idiv 1 add 10 mul 5 exch moveto
+        1 1 fname length d_header_w 6 idiv idiv
+        {
+          dup fname exch 1 sub d_header_w 6 idiv mul d_header_w 6 idiv getinterval show
+          5 exch 10 mul fname length d_header_w 6 idiv idiv 1 add 10 mul exch sub moveto
+        } for
+        5 10 moveto
+        fname fname length d_header_w 6 idiv idiv d_header_w 6 idiv mul dup fname length exch sub getinterval show
+      }ifelse
+    }ifelse
+
+  grestore
+} def
+%%EndResource
+/d_page_w 564 def
+/d_page_h 744 def
+/d_header_x 0 def
+/d_header_y 700 def
+/d_header_w 564 def
+/d_header_h 44 def
+/d_footer_x 0 def
+/d_footer_y 0 def
+/d_footer_w 564 def
+/d_footer_h 0 def
+/d_output_w 564 def
+/d_output_h 700 def
+/cols 1 def
+%%EndSetup
+%%Page: (1) 1
+%%BeginPageSetup
+_S
+24 24 translate
+/pagenum 1 def
+/fname (Makefile) def
+/fdir () def
+/ftail (Makefile) def
+% User defined strings:
+/fmodstr (Fri May 01 09:07:37 2009) def
+/pagenumstr (1) def
+/user_header_p false def
+%%EndPageSetup
+do_header
+5 689 M
+(########################################################) s
+5 680 M
+(# Programmer: Eric J Lima                              #) s
+5 671 M
+(#                                                      #) s
+5 662 M
+(# Program: Fibonacci Frequency                         #) s
+5 653 M
+(#                                                      #) s
+5 644 M
+(# Approximate Completion Time: 6 hours                 #) s
+5 635 M
+(########################################################) s
+5 608 M
+(frequency : main.o fibonacci.o) s
+5 599 M
+(        gcc -g -o frequency main.o fibonacci.o) s
+5 581 M
+(main.o : main.c) s
+5 572 M
+(        gcc -c -g -ansi -Wall main.c) s
+5 554 M
+(fibonacci.o : fibonacci.c fibonacci.h) s
+5 545 M
+(        gcc -c -g -ansi -Wall fibonacci.c) s
+5 527 M
+(clean :) s
+5 518 M
+(        rm *.o) s
+5 509 M
+(        rm frequency) s
+_R
+S
+%%Page: (1) 2
+%%BeginPageSetup
+_S
+24 24 translate
+/pagenum 1 def
+/fname (fibonacci.c) def
+/fdir () def
+/ftail (fibonacci.c) def
+% User defined strings:
+/fmodstr (Fri May 01 10:23:33 2009) def
+/pagenumstr (1) def
+/user_header_p false def
+%%EndPageSetup
+do_header
+5 689 M
+(/*************************************/) s
+5 680 M
+(/* Fibonacci.c                       */) s
+5 671 M
+(/*************************************/) s
+5 653 M
+(#include <stdlib.h>) s
+5 644 M
+(#include <stdio.h>) s
+5 635 M
+(#include "fibonacci.h") s
+5 617 M
+(extern integer load \( integer n \)) s
+5 608 M
+({) s
+5 590 M
+(  int i ;) s
+5 572 M
+(  for \( i = 1 ; i <= n.size + 1 ; i++ \) n.digit[i] = -1 ;) s
+5 554 M
+(  return n ;) s
+5 536 M
+(}) s
+5 518 M
+(extern float frequency \( integer n, float a \)) s
+5 509 M
+({) s
+5 491 M
+(  int i ;) s
+5 473 M
+(  float count = 0 ;) s
+5 455 M
+(  for \( i = 0 ; i < n.size ; i++ \)) s
+5 446 M
+(    {) s
+5 437 M
+(      if \( n.digit[i] == a \) count++ ;) s
+5 428 M
+(    }) s
+5 410 M
+(  return \( count / n.size \) ;) s
+5 392 M
+(}) s
+5 374 M
+(extern integer fibonacci \( integer a, int n \)) s
+5 365 M
+({) s
+5 347 M
+(  integer c ;) s
+5 338 M
+(  integer temp ;) s
+5 320 M
+(  c.size = 1 ;) s
+5 311 M
+(  c.digit[0] = 1 ;) s
+5 293 M
+(  temp.size = 1 ;) s
+5 284 M
+(  temp.digit[0] = 1 ;) s
+5 266 M
+(  load\( temp \) ;) s
+5 257 M
+(  load\( c \) ;) s
+5 239 M
+(  int i = 1 ;) s
+5 221 M
+(  do {) s
+5 203 M
+(    a = add\(temp,c\) ;) s
+5 185 M
+(    temp = c ;) s
+5 167 M
+(    c = a ;) s
+5 149 M
+(    i++ ;) s
+5 131 M
+(  }) s
+5 113 M
+(  while \( i <= \( a \) \) ;) s
+5 95 M
+(  return a ;) s
+5 77 M
+(}) s
+5 59 M
+(extern integer add \( integer n, integer b \)) s
+5 50 M
+({) s
+5 32 M
+(  int i = 0 ;) s
+5 14 M
+(  for \( i = 0 ; i < b.size ; i++ \)) s
+5 5 M
+(    {) s
+_R
+S
+%%Page: (2) 3
+%%BeginPageSetup
+_S
+24 24 translate
+/pagenum 2 def
+/fname (fibonacci.c) def
+/fdir () def
+/ftail (fibonacci.c) def
+% User defined strings:
+/fmodstr (Fri May 01 10:23:33 2009) def
+/pagenumstr (2) def
+/user_header_p false def
+%%EndPageSetup
+do_header
+5 680 M
+(      n.digit[i] += b.digit[i] ;) s
+5 662 M
+(      if \( n.digit[i] > 9 \)) s
+5 653 M
+(        {) s
+5 644 M
+(          n.digit[i] %= 10 ;) s
+5 635 M
+(          n.digit[i+1] += 1 ;) s
+5 626 M
+(          n.size++ ;) s
+5 617 M
+(        }) s
+5 608 M
+(    }) s
+5 590 M
+(  return n ;) s
+5 572 M
+(}) s
+5 554 M
+(extern integer digitcalc \( integer n \)) s
+5 545 M
+({) s
+5 536 M
+(  int i = 0, count = 1 ;) s
+5 518 M
+(  while \( n.digit[i] != -1 \)) s
+5 509 M
+(    {) s
+5 500 M
+(      i++ ;) s
+5 491 M
+(      count ++ ;) s
+5 482 M
+(    }) s
+5 464 M
+(  n.size = count ;) s
+5 446 M
+(  return n ;) s
+5 437 M
+(}) s
+_R
+S
+%%Page: (1) 4
+%%BeginPageSetup
+_S
+24 24 translate
+/pagenum 1 def
+/fname (main.c) def
+/fdir () def
+/ftail (main.c) def
+% User defined strings:
+/fmodstr (Fri May 01 09:07:56 2009) def
+/pagenumstr (1) def
+/user_header_p false def
+%%EndPageSetup
+do_header
+5 689 M
+(/*************************************/) s
+5 680 M
+(/* main.c                            */) s
+5 671 M
+(/*************************************/) s
+5 653 M
+(#include <stdio.h>) s
+5 644 M
+(#include "fibonacci.h") s
+5 626 M
+(int main \( int argc, char *argv[] \)) s
+5 617 M
+({) s
+5 599 M
+(  int a, e ;) s
+5 590 M
+(  integer n ;) s
+5 581 M
+(  n.size = 1 ;) s
+5 572 M
+(  n.digit[0] = 1 ;) s
+5 554 M
+(  printf\( "Input the Fibonacci index: " \) ;) s
+5 545 M
+(  scanf \( "%d", &a \) ;) s
+5 527 M
+(  printf\( "Input the digit whose frequency is desired: " \) ;) s
+5 518 M
+(  scanf \( "%d", &e \) ;) s
+5 500 M
+(  n = fibonacci\( n, a \) ;) s
+5 482 M
+(  printf\( "\\n" \);) s
+5 464 M
+(  printf\( "The digit %d occured with frequency: %lf \\n\\n", e, frequency\(n, e\) \) ;) s
+5 446 M
+(  return 0  ;) s
+5 428 M
+(}) s
+_R
+S
+%%Page: (1) 5
+%%BeginPageSetup
+_S
+24 24 translate
+/pagenum 1 def
+/fname (fibonacci.h) def
+/fdir () def
+/ftail (fibonacci.h) def
+% User defined strings:
+/fmodstr (Fri May 01 09:05:13 2009) def
+/pagenumstr (1) def
+/user_header_p false def
+%%EndPageSetup
+do_header
+5 689 M
+(/*************************************/) s
+5 680 M
+(/* fibonacci.h                       */) s
+5 671 M
+(/*************************************/) s
+5 653 M
+(#ifndef _fibonacci) s
+5 644 M
+(#define _fibonacci) s
+5 626 M
+(#include "globals.h") s
+5 608 M
+(typedef struct { int digit[10000] ; float size ; } integer ;) s
+5 590 M
+(extern integer load \( integer n \) ;) s
+5 581 M
+(extern float frequency \( integer n, float a \) ;) s
+5 572 M
+(extern integer fibonacci \( integer a, int n \)  ;) s
+5 563 M
+(extern integer add \( integer n, integer b \) ;) s
+5 554 M
+(extern integer digitcalc \( integer n \) ;) s
+5 536 M
+(#endif) s
+_R
+S
+%%Page: (1) 6
+%%BeginPageSetup
+_S
+24 24 translate
+/pagenum 1 def
+/fname (globals.h) def
+/fdir () def
+/ftail (globals.h) def
+% User defined strings:
+/fmodstr (Fri May 01 09:07:13 2009) def
+/pagenumstr (1) def
+/user_header_p false def
+%%EndPageSetup
+do_header
+5 689 M
+(/******************************************************/) s
+5 680 M
+(/* globals.h                                          */) s
+5 671 M
+(/*                                                    */) s
+5 662 M
+(/* generic_ptr      see page 44 in Esakov             */) s
+5 653 M
+(/* status           see page 41 in Esakov             */) s
+5 644 M
+(/* bool             see page 41 in Esakov             */) s
+5 635 M
+(/* DATA, NEXT       see page 57 in Esakov             */) s
+5 626 M
+(/******************************************************/) s
+5 608 M
+(#ifndef _globals) s
+5 599 M
+(#define _globals) s
+5 581 M
+(#define DATA\( L \) \( \( L \) -> datapointer \)) s
+5 572 M
+(#define NEXT\( L \) \( \( L \) -> next \)) s
+5 563 M
+(#define PREV\( L \) \( \( L \) -> prev \) ) s
+5 545 M
+(typedef enum { OK, ERROR } status;) s
+5 536 M
+(typedef enum { FALSE=0 , TRUE=1 } bool;) s
+5 527 M
+(typedef void *generic_ptr;) s
+5 509 M
+(#define E_IO 1 ) s
+5 500 M
+(#define E_SPACE 2) s
+5 491 M
+(#define E_LINES 3) s
+5 482 M
+(#define E_BADCMD 4) s
+5 473 M
+(#define E_DELETE 5) s
+5 464 M
+(#define E_MOVE 6) s
+5 455 M
+(#define MAXERROR 7) s
+5 437 M
+(#define BUFSIZE 80) s
+5 419 M
+(#endif) s
+_R
+S
+%%Trailer
+%%Pages: 6
+%%DocumentNeededResources: font Courier-Bold Courier 
+%%EOF

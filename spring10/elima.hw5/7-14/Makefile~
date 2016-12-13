@@ -1,0 +1,5 @@
+prog : *.h *.cpp
+	g++ *.cpp -o prog -g
+
+clean:
+	rm prog

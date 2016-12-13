@@ -1,0 +1,5 @@
+#evilsnakes: $(OBJ)
+#        $(CC) $(CFLAGS) $(OBJ) -l ncurses -o evilsnakes
+
+main.o: convert_float_to_bits.c
+	$(CC) $(CFLAGS) -c convert_float_to_bits.c

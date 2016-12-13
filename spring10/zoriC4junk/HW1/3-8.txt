@@ -1,0 +1,14 @@
+3.8 How many and what kind of variables (primitive or object) are created in the code below?
+
+> World worldObj = new World();
+> Turtle turtle1 = new Turtle(worldObj);
+> turtle1.forward(30);
+> Turtle turtle2 = new Turtle(worldObj);
+> turtle2.turnRight();
+> turtle2.forward(30);
+ 
+
+Answer:
+
+1 World object.
+2 Turtle objects.

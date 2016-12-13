@@ -1,0 +1,16 @@
+Programmer: Eric Lima
+Program: Evil Snakes!
+Date: 5/20/2010
+
+Added Modifications:
+
+	1) Color - The Mage is yellow, the Snakes are green, the Fireballs are red, and the Walls are white. Ncurses functionality is used to get the sprite colores to change.
+
+	2) Menu - The player has the choice to play the game, view instructions, or quit. 
+
+	3) Timer - The Timer starts at 30 and counts down until it hits 0. Once the timer hits 0 the player moves onto the next level. 
+
+	4) Level System - Once the timer hits 0 the player moves onto the next level. As each level progresses more enemies spawn.
+
+
+

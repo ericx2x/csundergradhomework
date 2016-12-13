@@ -1,0 +1,18 @@
+Script started on Fri 01 Oct 2010 04:44:22 PM EDT
+elima@nova:/nfs/galaxy/undergrad/2012/elima/programs/fall10/arch/assign2$ a.out  [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K 
+Please enter 2 floating point numbers each with:
+    -no more than 6 significant digits
+    -a value between  +  10**37 and 10**-37
+Enter Float 1: 2
+Enter Float 2: 1
+Original pattern of Float 1: 0 1000 0000 000 0000 0000 0000 0000 0000  
+Original pattern of Float 2: 0 0111 1111 000 0000 0000 0000 0000 0000  
+Bit pattern of result      : 0 1000 0000 100 0000 0000 0000 0000 0000  
+
+EMULATED FLOATING RESULT FROM PRINTF ==>> 3
+HARDWARE FLOATING RESULT FROM PRINTF ==>> 3
+
+elima@nova:/nfs/galaxy/undergrad/2012/elima/programs/fall10/arch/assign2$ exit
+exit
+
+Script done on Fri 01 Oct 2010 04:44:33 PM EDT

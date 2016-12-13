@@ -1,0 +1,17 @@
+Xu:
+
+I spoke with you in an email before. As a response to that email I am commenting on my total program, because my previous programs didn't really have many comments. 
+
+So, this program should work pretty straight forward. It recieves nodes that make a tree, one to the leftmost child and one it's right sibling.
+
+I have included a typescript showing the creation and traversal of the tree. It should be self explanitory. 
+
+The UML diagram should also be correct.
+
+Thank you for your time and for listening.
+
+___
+
+Sincerely,
+Eric J Lima 
+
